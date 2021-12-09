@@ -245,7 +245,7 @@
 	// 				contactForm[0].reset();
 	// 				formResponse.text("Thanks! Your message sent correctly.").fadeIn(1000);
 	// 				submitBtn.html("Send Message");
-	                                alert("Send Message");
+	                               
 	// 			} else {
 	// 				formResponse.text(text).fadeIn(1000);
 	// 			}
@@ -409,11 +409,11 @@ function init() {
 		position: new google.maps.LatLng(30.609788, 32.268555),	// Change to your latitude & longitude
 		/* animation:google.maps.Animation.BOUNCE, Make the marker bounce */
 		map: map,
-		title: "Marqa Studio"		// Change to your text
+		title: ""		// Change to your text
 	});
 
 	var infowindow = new google.maps.InfoWindow({
-		content: "Marqa Studio"		// Change to your text
+		content: ""		// Change to your text
 	});
 
 	google.maps.event.addListener(marker, "click", function () {
