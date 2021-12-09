@@ -218,6 +218,7 @@
 	contactForm.validator().on("submit", function (e) {
 		if (e.isDefaultPrevented()) {
 			formResponse.alert("Thanks! Your message sent correctly.").fadeIn(1000);
+			alert("Thanks! Your message sent correctly.");
 			
 		} else {
 			e.preventDefault();
@@ -233,7 +234,7 @@
 	// 	// Ajax    
 	// 	$.ajax({
 	// 		type: "POST",
-	// 		url: "php/contact.php",
+	// 		url: "https://formspree.io/f/mknyngly",
 	// 		data: "name=" + name + "&mail=" + mail + "&message=" + message,
 	// 		beforeSend: function (text) {
 	// 			submitBtn.html("Sending...");
@@ -244,6 +245,7 @@
 	// 				contactForm[0].reset();
 	// 				formResponse.text("Thanks! Your message sent correctly.").fadeIn(1000);
 	// 				submitBtn.html("Send Message");
+	                                alert("Send Message");
 	// 			} else {
 	// 				formResponse.text(text).fadeIn(1000);
 	// 			}
