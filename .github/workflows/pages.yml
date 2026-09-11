@@ -1,41 +1,31 @@
-name: Deploy GitHub Pages
+name: Revert to bbe7414
 
 on:
-  push:
-    branches:
-      - master 
-    paths-ignore:
-      - CS3_Backup.txt
+  workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
+  contents: write
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
+  revert:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Revert master to bbe7414
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin master
+          git checkout master
+
+          git revert --no-commit bbe7414caf429499d5f1bd7fed1d49e490e9014a..HEAD
+          git commit -m "Revert to bbe7414caf429499d5f1bd7fed1d49e490e9014a" || echo "Nothing to revert"
+
+          git push origin master
